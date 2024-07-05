@@ -1,0 +1,24 @@
+label inicio
+- abacate
+	<Empty Text Event>
+	return
+label sdfsd
+- banana
+	bananasdsadasdsa
+	if {} == "":
+		[wait_input]
+		[wait time="1.0"]
+jump inicio/inicio
+[text_input]
+[signal]
+[sound volume="0.0"]
+[voice volume="0.0"]
+[music fade="0.0" volume="0.0"]
+[save slot=""]
+[update_position id="center" time="0.5"]
+[clear time="1.0"]
+[history]
+[background fade="0.0"]
+[style]
+# 
+do 
