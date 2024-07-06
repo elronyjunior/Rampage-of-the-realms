@@ -7,7 +7,7 @@ var is_attackin:bool=false
 var direction:Vector2 =Vector2(Input.get_axis("esquerda","direita"),Input.get_axis("cima","baixo"))
 #carregando o Player no código e outros objetos dele
 @onready var player = $"."
-@onready var marker_2d = $Marker2D
+@export var marker_2d:Marker2D=null
 @export var ice_timer:Timer=null
 @export var fire_timer:Timer=null
 const ice := preload("res://projeteis/ice_bullet/ice_bullet.tscn")
@@ -66,11 +66,13 @@ func direcao():
 		marker_2d.position.y=0
 #essa função é executada quandoo jogo inicia
 func _ready():
+	Hud()
 	create_timers()
 	#pega os playback do animation_tree para depois usar o travel()
 	state_machine= animation_tree["parameters/playback"]
 #essa função é chamada 30 vezes por segundo seguindo o valor de _delta
 func _physics_process(_delta):
+	time_await()
 	#passa o valor restante do coldown para o time no script global
 	#verifica se apertou o ataque do gelo e se não esta em coldown 
 	if(Input.is_action_just_pressed("0") && !Global.coldown_0 && Global.habilidades[0][0]!="empty"):
@@ -182,12 +184,18 @@ func create_timers():
 			var time=Timer.new()
 			time.name=str(timers)
 			time.one_shot=true
-			time.autostart=true
 			time.wait_time=Global.habilidades[timers][1]
 			var func_ref = get(str("timeout_",timers))
 			time.timeout.connect(func_ref)
 			player.add_child(time)
 
+func time_await():
+	for elementos in Global.habilidades:
+		if(Global.habilidades[elementos][0]!="empty"):
+			var time_aw=get_node(str(elementos))
+			Global.time_await[elementos]=floor(time_aw.time_left * 100)/100
+			print(Global.time_await[elementos])
+		
 func timeout_0():
 	Global.coldown_0=false
 func timeout_1():
@@ -195,5 +203,11 @@ func timeout_1():
 func timeout_2():
 	Global.coldown_2=false
 	
+func Hud():
+	var hud:=preload("res://Player/hud.tscn").instantiate()
+	#call_deferrend é uma função que agenda uma ação caso o nó solicitado esteja ocupado
+	get_parent().add_child.call_deferred(hud)
 	
+
+
 

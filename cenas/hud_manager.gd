@@ -7,6 +7,7 @@ extends Control
 
 var ice_one:bool=true
 var fire_one:bool=true
+@export var control:Control=null
 const cinza = preload("res://cenas/cinza.gdshader")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,28 +19,20 @@ func _ready():
 		img.texture=imgtemp
 		img.custom_minimum_size=Vector2(50,50)
 		h_box_container.add_child(img)
+		var label=Label.new()
+		label.name=str("label_",elementos)
+		label.text="o"
+		control.add_child(label)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
-"""
-	if(!Global.ice_coldown):
-		ice_one=true
-		ICE.material.shader=null
-		ice_text.text=" "
-	if(!Global.fire_coldown):
-		fire_text.text=" "
-		fire.material.shader=null
-		fire_one=true
-	if(Global.ice_coldown && ice_one):
-		ICE.material.shader=cinza
-		ice_one=false
-	if(Global.fire_coldown && fire_one):
-		fire.material.shader=cinza
-		fire_one=false
-	if(Global.ice_coldown):
-		ice_text.text=str(Global.time)
-	if(Global.fire_coldown):
-		fire_text.text=str(Global.fire_time)
-		"""
+	for elementos in Global.habilidades:
+		var label_p = get_node(str("label_",elementos))
+		var img_p = get_node(str("container/VBoxContainer/HBoxContainer/",elementos))
+		if(Global.time_await[elementos]!=0):
+			label_p.text=str(Global.time_await[elementos])
+			label_p.global_position.x=img_p.global_position.x+10
+			label_p.global_position.y=img_p.global_position.y+12
+		else:
+			label_p.text=""
 	
-		
