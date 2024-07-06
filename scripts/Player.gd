@@ -73,17 +73,17 @@ func _ready():
 func _physics_process(_delta):
 	#passa o valor restante do coldown para o time no script global
 	#verifica se apertou o ataque do gelo e se não esta em coldown 
-	if(Input.is_action_just_pressed("0") && !Global.coldown_0):
+	if(Input.is_action_just_pressed("0") && !Global.coldown_0 && Global.habilidades[0][0]!="empty"):
 		projeteis(Global.habilidades[0][0])
 		var name0:Timer=get_node("0")
 		name0.start()
 		Global.coldown_0=true
-	if(Input.is_action_just_pressed("1") && !Global.coldown_1):
+	if(Input.is_action_just_pressed("1") && !Global.coldown_1 && Global.habilidades[1][0]!="empty"):
 		projeteis(Global.habilidades[1][0])
 		var name1:Timer=get_node("1")
 		name1.start()
 		Global.coldown_1=true
-	if(Input.is_action_just_pressed("2") && !Global.coldown_2):
+	if(Input.is_action_just_pressed("2") && !Global.coldown_2 && Global.habilidades[2][0]!="empty"):
 		projeteis(Global.habilidades[2][0])
 		var name2:Timer=get_node("2")
 		name2.start()
@@ -115,10 +115,6 @@ func attack():
 		set_physics_process(false)
 		attack_timer.start()
 		is_attackin=true
-	if (Input.is_action_just_pressed("attack") && is_attackin == false):
-		set_physics_process(false)
-		attack_timer.start()
-		is_attackin=true
 #ativa as animaçoes
 func animated():
 	#temos verificações para ver qual animação deve ser chamada
@@ -132,6 +128,7 @@ func animated():
 	state_machine.travel("idle")
 #cria projéteis
 func projeteis(tipo:String):
+	var vazio:bool=false
 	#instancia vazia
 	var instancia
 	#instancia de objeto neutro apenas para manipular durante o código
@@ -143,27 +140,30 @@ func projeteis(tipo:String):
 			instancia=ice.instantiate()
 		"fire":
 			instancia=fire.instantiate()
+		"empty":
+			vazio=true
 	#uma serie de verificações para definir a rotação do projétil
 	#utilizando o rotate() para conseguir alguns angulos como PI/4
-	if(dir[0]==-1 && dir[1]==-1):
-		instancia.rotate(5*PI/4)
-	elif(dir[0]==-1 && dir[1]==1):
-		instancia.rotate(3*PI/4)
-	elif(dir[0]==1 && dir[1]==1):
-		instancia.rotate(PI/4)
-	elif(dir[0]==1 && dir[1]==-1):
-		instancia.rotate(7*PI/4)
-	elif(dir[0]==-1):
-		instancia.scale.x=instancia.scale.x*-1
-	elif(dir[1]==-1):
-		instancia.rotate(PI/2*-1)
-	elif(dir[1]==1):
-		instancia.rotate(PI / 2)
-	#definindo a posição do projétil igual o marker_2d que acompanha a direção
-	#do Player
-	instancia.global_position=marker_2d.global_position
-	instancia.set_direction(dir)
-	get_parent().add_sibling(instancia)
+	if(!vazio):
+		if(dir[0]==-1 && dir[1]==-1):
+			instancia.rotate(5*PI/4)
+		elif(dir[0]==-1 && dir[1]==1):
+			instancia.rotate(3*PI/4)
+		elif(dir[0]==1 && dir[1]==1):
+			instancia.rotate(PI/4)
+		elif(dir[0]==1 && dir[1]==-1):
+			instancia.rotate(7*PI/4)
+		elif(dir[0]==-1):
+			instancia.scale.x=instancia.scale.x*-1
+		elif(dir[1]==-1):
+			instancia.rotate(PI/2*-1)
+		elif(dir[1]==1):
+			instancia.rotate(PI / 2)
+		#definindo a posição do projétil igual o marker_2d que acompanha a direção
+		#do Player
+		instancia.global_position=marker_2d.global_position
+		instancia.set_direction(dir)
+		get_parent().add_sibling(instancia)
 	
 #um couldown para o attack
 func _on_attack_timer_timeout():
@@ -178,14 +178,15 @@ func _on_fire_timer_timeout():
 
 func create_timers():
 	for timers in Global.habilidades:
-		var time=Timer.new()
-		time.name=str(timers)
-		time.one_shot=true
-		time.autostart=true
-		time.wait_time=Global.habilidades[timers][1]
-		var func_ref = get(str("timeout_",timers))
-		time.timeout.connect(func_ref)
-		player.add_child(time)
+		if(Global.habilidades[timers][0]!="empty"):
+			var time=Timer.new()
+			time.name=str(timers)
+			time.one_shot=true
+			time.autostart=true
+			time.wait_time=Global.habilidades[timers][1]
+			var func_ref = get(str("timeout_",timers))
+			time.timeout.connect(func_ref)
+			player.add_child(time)
 
 func timeout_0():
 	Global.coldown_0=false

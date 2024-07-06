@@ -10,4 +10,4 @@ var coldown_2:bool=false
 var bullet_possition:Vector2
 
 #slot/tiro/tempo/dano
-var habilidades={0:["ice",3,10],1:["fire",2,5],2:["fire",2,5]}
+var habilidades={0:["ice",3,10],1:["empty",2,5],2:["fire",2,5]}
