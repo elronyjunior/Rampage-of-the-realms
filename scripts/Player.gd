@@ -193,7 +193,7 @@ func time_await():
 	for elementos in Global.habilidades:
 		if(Global.habilidades[elementos][0]!="empty"):
 			var time_aw=get_node(str(elementos))
-			Global.time_await[elementos]=floor(time_aw.time_left * 100)/100
+			Global.time_await[elementos]=floor(time_aw.time_left * 10)/10
 			print(Global.time_await[elementos])
 		
 func timeout_0():

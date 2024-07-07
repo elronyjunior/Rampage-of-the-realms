@@ -7,6 +7,3 @@
 script = ExtResource("1_lblaq")
 
 [node name="Player" parent="." instance=ExtResource("1_vibx4")]
-move_speed = 64.0
-aceleration = 0.4
-friction = 0.8
