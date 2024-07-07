@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://eabwntnbuc30"
-path="res://.godot/imported/Gamer.ttf-b431dd93b7239290cdd5791890d5fd73.fontdata"
+path="res://.godot/imported/Gamer.ttf-290f24f0d1789997b4fa494e6ae16183.fontdata"
 
 [deps]
 
-source_file="res://Player/Gamer.ttf"
-dest_files=["res://.godot/imported/Gamer.ttf-b431dd93b7239290cdd5791890d5fd73.fontdata"]
+source_file="res://Player/hb.HUD/Gamer.ttf"
+dest_files=["res://.godot/imported/Gamer.ttf-290f24f0d1789997b4fa494e6ae16183.fontdata"]
 
 [params]
 

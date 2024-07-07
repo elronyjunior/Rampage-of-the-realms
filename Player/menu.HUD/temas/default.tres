@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c4y3qsc3ijdi5"]
+
+[ext_resource type="FontFile" uid="uid://eabwntnbuc30" path="res://Player/hb.HUD/Gamer.ttf" id="1_cexma"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_at1jp"]
+bg_color = Color(0.41417, 0.298892, 0.953643, 1)
+border_width_left = 5
+border_width_bottom = 4
+border_color = Color(0.0767277, 0.058139, 0.392786, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlv2l"]
+bg_color = Color(0.406576, 0.489048, 0.984498, 1)
+border_width_left = 7
+border_width_bottom = 8
+border_color = Color(0.0767277, 0.058139, 0.392786, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpeiq"]
+bg_color = Color(0.957033, 0.091812, 0.571249, 1)
+border_width_left = 3
+border_width_bottom = 2
+border_color = Color(0.0767277, 0.058139, 0.392786, 1)
+
+[resource]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_cexma")
+Button/styles/hover = SubResource("StyleBoxFlat_at1jp")
+Button/styles/normal = SubResource("StyleBoxFlat_vlv2l")
+Button/styles/pressed = SubResource("StyleBoxFlat_xpeiq")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0hki5rk11de2"]
+
+[ext_resource type="Script" path="res://Player/menu.HUD/config/config.gd" id="1_hxyty"]
+[ext_resource type="Theme" uid="uid://c4y3qsc3ijdi5" path="res://Player/menu.HUD/temas/default.tres" id="2_rn4t6"]
+
+[node name="config" type="CanvasLayer"]
+script = ExtResource("1_hxyty")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_right = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btn_quit" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("2_rn4t6")
+text = "Voltar"
+
+[connection signal="pressed" from="Control/HBoxContainer/VBoxContainer/btn_quit" to="." method="_on_btn_quit_pressed"]

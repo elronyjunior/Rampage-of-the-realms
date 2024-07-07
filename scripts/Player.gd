@@ -8,8 +8,6 @@ var direction:Vector2 =Vector2(Input.get_axis("esquerda","direita"),Input.get_ax
 #carregando o Player no código e outros objetos dele
 @onready var player = $"."
 @export var marker_2d:Marker2D=null
-@export var ice_timer:Timer=null
-@export var fire_timer:Timer=null
 const ice := preload("res://projeteis/ice_bullet/ice_bullet.tscn")
 const fire:= preload("res://projeteis/fire_bullet/fire_bullet.tscn")
 const neutro := preload("res://projeteis/neutro.tscn")
@@ -67,6 +65,7 @@ func direcao():
 #essa função é executada quandoo jogo inicia
 func _ready():
 	Hud()
+	Menu()
 	create_timers()
 	#pega os playback do animation_tree para depois usar o travel()
 	state_machine= animation_tree["parameters/playback"]
@@ -171,13 +170,7 @@ func projeteis(tipo:String):
 func _on_attack_timer_timeout():
 	set_physics_process(true)
 	is_attackin=false
-#um couldown para o gelo
-func _on_ice_timer_timeout():
-	Global.ice_coldown=false       
-
-func _on_fire_timer_timeout():
-	Global.fire_coldown=false     
-
+	
 func create_timers():
 	for timers in Global.habilidades:
 		if(Global.habilidades[timers][0]!="empty"):
@@ -194,19 +187,21 @@ func time_await():
 		if(Global.habilidades[elementos][0]!="empty"):
 			var time_aw=get_node(str(elementos))
 			Global.time_await[elementos]=floor(time_aw.time_left * 10)/10
-			print(Global.time_await[elementos])
-		
+func Hud():
+	var hud:=preload("res://Player/hb.HUD/hud.tscn").instantiate()
+	#call_deferrend é uma função que agenda uma ação caso o nó solicitado esteja ocupado
+	get_parent().add_child.call_deferred(hud)
+
+func Menu():
+	var menu:=preload("res://Player/menu.HUD/menu/menu.tscn").instantiate()
+	get_parent().add_child.call_deferred(menu)
 func timeout_0():
 	Global.coldown_0=false
 func timeout_1():
 	Global.coldown_1=false
 func timeout_2():
 	Global.coldown_2=false
-	
-func Hud():
-	var hud:=preload("res://Player/hud.tscn").instantiate()
-	#call_deferrend é uma função que agenda uma ação caso o nó solicitado esteja ocupado
-	get_parent().add_child.call_deferred(hud)
+
 	
 
 

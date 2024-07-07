@@ -1,7 +1,7 @@
 [gd_scene load_steps=41 format=3 uid="uid://c6a57beeib6p4"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_hcilw"]
-[ext_resource type="Texture2D" uid="uid://ba6lamnxhti3e" path="res://Player/player.png" id="2_ewlgh"]
+[ext_resource type="Texture2D" uid="uid://ba6lamnxhti3e" path="res://Player/sprite/player.png" id="2_50uoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3q46"]
 size = Vector2(12, 5)
@@ -671,7 +671,7 @@ attack_timer = NodePath("attack_timer")
 
 [node name="spr_Player" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -12)
-texture = ExtResource("2_ewlgh")
+texture = ExtResource("2_50uoo")
 hframes = 6
 vframes = 10
 
