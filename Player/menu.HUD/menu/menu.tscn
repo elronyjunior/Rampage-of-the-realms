@@ -53,6 +53,7 @@ size_flags_vertical = 4
 
 [node name="btn_resume" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
 process_mode = 3
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme = ExtResource("2_ieeqf")
 shortcut = SubResource("Shortcut_hj1o0")

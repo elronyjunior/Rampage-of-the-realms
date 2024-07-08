@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg5d1iets4p6e"]
+[gd_scene load_steps=10 format=3 uid="uid://bg5d1iets4p6e"]
 
 [ext_resource type="Script" path="res://scripts/title_screem.gd" id="1_4iq0c"]
 [ext_resource type="Texture2D" uid="uid://c1xxtbaaebquk" path="res://cenas/title screem/logo.png" id="1_fjrxg"]
@@ -8,7 +8,97 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbh8x"]
 
-[node name="title_screem" type="Control"]
+[sub_resource type="Animation" id="Animation_mloia"]
+resource_name = "fade_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7hedf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cw8o8"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wamk"]
+_data = {
+"RESET": SubResource("Animation_7hedf"),
+"fade_in": SubResource("Animation_mloia"),
+"fade_out": SubResource("Animation_cw8o8")
+}
+
+[node name="title_screem" type="Control" node_paths=PackedStringArray("animation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +106,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4iq0c")
+animation = NodePath("AnimationPlayer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -85,6 +176,19 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_xbh8x")
 layout_mode = 2
 theme = ExtResource("2_8cjwo")
 text = "Quit Game"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5wamk")
+}
+
+[node name="fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/btn_new_game" to="." method="_on_btn_new_game_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/btn_continue" to="." method="_on_btn_continue_pressed"]
