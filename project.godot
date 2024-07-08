@@ -13,6 +13,8 @@ config_version=5
 config/name="Rampage of the Realms"
 run/main_scene="res://cenas/title screem/title_screem.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/image="res://icon/galinha.png"
+config/icon="res://icon/galinha.png"
 
 [autoload]
 
