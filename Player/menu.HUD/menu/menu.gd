@@ -8,7 +8,7 @@ func _unhandled_input(event):
 		menu.visible=true
 		get_tree().paused=true
 		
-	
+
 func _on_btn_resume_pressed():
 	menu.visible=false
 	get_tree().paused=false

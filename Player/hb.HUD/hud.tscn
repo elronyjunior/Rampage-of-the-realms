@@ -6,7 +6,7 @@
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("control", "h_box_container")]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("FPS", "control", "h_box_container")]
 texture_filter = 1
 clip_contents = true
 layout_mode = 3
@@ -18,6 +18,7 @@ grow_vertical = 2
 tooltip_text = "
 "
 script = ExtResource("1_berlb")
+FPS = NodePath("container/MarginContainer/HBoxContainer/FPS")
 control = NodePath(".")
 h_box_container = NodePath("container/VBoxContainer/HBoxContainer")
 fonte = ExtResource("2_c8o0q")
@@ -46,3 +47,16 @@ size_flags_vertical = 8
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/container"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/container/MarginContainer"]
+layout_mode = 2
+
+[node name="FPS" type="Label" parent="Control/container/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0

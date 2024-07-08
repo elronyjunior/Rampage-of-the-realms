@@ -1,5 +1,6 @@
 extends Control
 @export_category("Nós")
+@export var FPS:Label=null
 @export var control:Control=null
 @export var h_box_container:HBoxContainer=null
 @export_category("fonte habilidades")
@@ -30,6 +31,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if(Global.FPS):
+		FPS.text=str("FPS:",Engine.get_frames_per_second())
 	for elementos in Global.habilidades:
 		var label_p = get_node(str("label_",elementos))
 		var img_p = get_node(str("container/VBoxContainer/HBoxContainer/",elementos))

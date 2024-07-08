@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rampage of the Realms"
-run/main_scene="res://cenas/test.tscn"
+run/main_scene="res://cenas/title screem/title_screem.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [autoload]

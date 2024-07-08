@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg5d1iets4p6e"]
+
+[ext_resource type="Script" path="res://scripts/title_screem.gd" id="1_4iq0c"]
+[ext_resource type="Texture2D" uid="uid://c1xxtbaaebquk" path="res://cenas/title screem/logo.png" id="1_fjrxg"]
+[ext_resource type="Theme" uid="uid://c4y3qsc3ijdi5" path="res://Player/menu.HUD/temas/default.tres" id="2_8cjwo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_648lr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbh8x"]
+
+[node name="title_screem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4iq0c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.376471, 0.529412, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = -11.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("1_fjrxg")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btn_new_game" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8cjwo")
+text = "New Game"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_648lr")
+
+[node name="btn_continue" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8cjwo")
+text = "Continue"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xbh8x")
+
+[node name="config" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8cjwo")
+text = "config"
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xbh8x")
+
+[node name="btn_quit" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8cjwo")
+text = "Quit Game"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/btn_new_game" to="." method="_on_btn_new_game_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/btn_continue" to="." method="_on_btn_continue_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/config" to="." method="_on_config_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/btn_quit" to="." method="_on_btn_quit_pressed"]
