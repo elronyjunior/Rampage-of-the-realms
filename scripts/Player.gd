@@ -202,7 +202,9 @@ func timeout_1():
 func timeout_2():
 	Global.coldown_2=false
 
-	
+
+
+
 
 
 

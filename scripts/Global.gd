@@ -13,4 +13,4 @@ func _ready():
 	DisplayServer.window_set_min_size(Vector2(800, 600))
 
 #slot/tiro/tempo/dano
-var habilidades={0:["ice",3,10],1:["fire",2,5],2:["empty",2,5]}
+var habilidades={0:["ice",3,10],1:["fire",2,5],2:["ice",2,5]}
