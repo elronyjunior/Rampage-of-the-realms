@@ -80,11 +80,18 @@ text = "Voltar"
 
 [node name="btn_quit" type="Button" parent="Control"]
 process_mode = 3
-layout_mode = 2
-offset_left = 526.0
-offset_top = 494.0
-offset_right = 638.0
-offset_bottom = 543.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = 0.836
+anchor_right = 0.548
+anchor_bottom = 0.912
+offset_left = -0.552063
+offset_top = 0.271973
+offset_right = -0.296021
+offset_bottom = 0.0239868
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("2_rn4t6")
 text = "Voltar"
 

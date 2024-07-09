@@ -55,42 +55,45 @@ func create_list():
 		hbox.add_child(label)
 		hbox.add_child(btn_key)
 func _input(event):
-	if(margin_container.visible && not event is InputEventMouseMotion):
+	if(margin_container.visible && not event is InputEventMouseMotion && not event is InputEventMouseButton):
+		var achou_text:bool=false
 		InputMap.action_erase_events(tecla)
 		InputMap.action_add_event(tecla,event)
+		for n in str(InputMap.action_get_events(tecla)):
+			if(achou_text==true):
+				var btn_name=get_node(str("Control/BoxContainer/VBoxContainer/Hbox_",tecla,"/btn_",tecla))
+				btn_name.text=n
+				achou_text=false
+			if(n=="("):
+				achou_text=true
 		margin_container.visible=false
-		print(InputMap.action_get_events(tecla))
 func createpanel():
 	margin_container.visible=true
 func _cima():
-	createpanel()
 	tecla="cima"
+	createpanel()
 func _baixo():
-	createpanel()
 	tecla="baixo"
+	createpanel()
 func _esquerda():
-	createpanel()
 	tecla="esquerda"
+	createpanel()
 func _direita():
-	createpanel()
 	tecla="direita"
+	createpanel()
 func _attack():
-	createpanel()
 	tecla="attack"
+	createpanel()
 func _0():
-	createpanel()
 	tecla="0"
+	createpanel()
 func _1():
-	createpanel()
 	tecla="1"
-func _2():
 	createpanel()
+func _2():
 	tecla="2"
+	createpanel()
 		
 
-
-
-
-
 func _on_button_pressed():
-	print(get_parent())
+	margin_container.visible=false
