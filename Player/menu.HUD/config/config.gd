@@ -1,8 +1,11 @@
 extends CanvasLayer
 @onready var config = $".."
 @export var VboxConatiner:VBoxContainer=null
+@export var HboxContainer:HBoxContainer=null
+@export var margin_container:MarginContainer=null
 var tema_input:=preload("res://Player/menu.HUD/temas/Input_config.tres")
 var inputs=[]
+var tecla=" "
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create_inputs()
@@ -11,9 +14,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
-
-func _input(_event):
 	pass
 
 func _on_btn_quit_pressed():
@@ -49,10 +49,48 @@ func create_list():
 				achou=false
 			if(i=="("):
 				achou=true
+		var func_ref = get(str("_",elementos))	
+		btn_key.pressed.connect(func_ref)
 		VboxConatiner.add_child(hbox)
 		hbox.add_child(label)
 		hbox.add_child(btn_key)
+func _input(event):
+	if(margin_container.visible && not event is InputEventMouseMotion):
+		InputMap.action_erase_events(tecla)
+		InputMap.action_add_event(tecla,event)
+		margin_container.visible=false
+		print(InputMap.action_get_events(tecla))
+func createpanel():
+	margin_container.visible=true
+func _cima():
+	createpanel()
+	tecla="cima"
+func _baixo():
+	createpanel()
+	tecla="baixo"
+func _esquerda():
+	createpanel()
+	tecla="esquerda"
+func _direita():
+	createpanel()
+	tecla="direita"
+func _attack():
+	createpanel()
+	tecla="attack"
+func _0():
+	createpanel()
+	tecla="0"
+func _1():
+	createpanel()
+	tecla="1"
+func _2():
+	createpanel()
+	tecla="2"
 		
 
 
 
+
+
+func _on_button_pressed():
+	print(get_parent())

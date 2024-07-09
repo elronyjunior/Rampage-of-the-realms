@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c4y3qsc3ijdi5"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c4y3qsc3ijdi5"]
 
 [ext_resource type="FontFile" uid="uid://eabwntnbuc30" path="res://Player/hb.HUD/Gamer.ttf" id="1_cexma"]
 
@@ -20,9 +20,21 @@ border_width_left = 3
 border_width_bottom = 2
 border_color = Color(0.0767277, 0.058139, 0.392786, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx0ja"]
+bg_color = Color(0.568644, 0.525164, 0.999311, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [resource]
 Button/font_sizes/font_size = 50
 Button/fonts/font = ExtResource("1_cexma")
 Button/styles/hover = SubResource("StyleBoxFlat_at1jp")
 Button/styles/normal = SubResource("StyleBoxFlat_vlv2l")
 Button/styles/pressed = SubResource("StyleBoxFlat_xpeiq")
+Panel/styles/panel = SubResource("StyleBoxFlat_hx0ja")

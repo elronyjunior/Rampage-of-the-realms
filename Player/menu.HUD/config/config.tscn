@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://Player/menu.HUD/config/config.gd" id="1_hxyty"]
 [ext_resource type="Theme" uid="uid://c4y3qsc3ijdi5" path="res://Player/menu.HUD/temas/default.tres" id="2_rn4t6"]
 
-[node name="config" type="CanvasLayer" node_paths=PackedStringArray("VboxConatiner")]
+[node name="config" type="CanvasLayer" node_paths=PackedStringArray("VboxConatiner", "HboxContainer", "margin_container")]
 script = ExtResource("1_hxyty")
 VboxConatiner = NodePath("Control/BoxContainer/VBoxContainer")
+HboxContainer = NodePath("Control/MarginContainer/HBoxContainer")
+margin_container = NodePath("Control/MarginContainer")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -14,16 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="btn_quit" type="Button" parent="Control"]
-process_mode = 3
-layout_mode = 2
-offset_left = 530.0
-offset_top = 596.0
-offset_right = 642.0
-offset_bottom = 645.0
-theme = ExtResource("2_rn4t6")
-text = "Voltar"
 
 [node name="BoxContainer" type="BoxContainer" parent="Control"]
 layout_mode = 1
@@ -39,4 +31,62 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 6
 
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("2_rn4t6")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.005
+anchor_bottom = 0.69
+offset_bottom = -1.52588e-05
+theme_override_font_sizes/font_size = 30
+text = "aperte um input valido..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Control/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.707
+anchor_right = 0.675
+anchor_bottom = 0.82
+offset_left = 0.199997
+offset_top = -0.100006
+offset_bottom = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_rn4t6")
+text = "Voltar"
+
+[node name="btn_quit" type="Button" parent="Control"]
+process_mode = 3
+layout_mode = 2
+offset_left = 526.0
+offset_top = 494.0
+offset_right = 638.0
+offset_bottom = 543.0
+theme = ExtResource("2_rn4t6")
+text = "Voltar"
+
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/btn_quit" to="." method="_on_btn_quit_pressed"]
