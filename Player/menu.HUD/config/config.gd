@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var VboxConatiner:VBoxContainer=null
 @export var HboxContainer:HBoxContainer=null
 @export var margin_container:MarginContainer=null
+@export var label_panel:Label=null
 var tema_input:=preload("res://Player/menu.HUD/temas/Input_config.tres")
 var inputs=[]
 var tecla=" "
@@ -32,7 +33,6 @@ func create_inputs():
 			inputs.append(i)
 
 func create_list():
-	var achou:bool=false
 	for elementos in inputs:
 		var hbox=HBoxContainer.new()
 		var label=Label.new()
@@ -43,30 +43,33 @@ func create_list():
 		label.text=elementos
 		label.theme=tema_input
 		btn_key.theme=tema_input
-		for i in str(InputMap.action_get_events(elementos)):
-			if(achou):
-				btn_key.text=str(i)
-				achou=false
-			if(i=="("):
-				achou=true
+		label.custom_minimum_size.x=160
+		label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+		btn_key.custom_minimum_size.x=100
+		btn_key.text=acha_tecla(elementos)
 		var func_ref = get(str("_",elementos))	
+		var separator:=VSeparator.new()
+		separator.theme=tema_input
 		btn_key.pressed.connect(func_ref)
+		VboxConatiner.add_child(separator)
 		VboxConatiner.add_child(hbox)
 		hbox.add_child(label)
 		hbox.add_child(btn_key)
 func _input(event):
 	if(margin_container.visible && not event is InputEventMouseMotion && not event is InputEventMouseButton):
-		var achou_text:bool=false
-		InputMap.action_erase_events(tecla)
-		InputMap.action_add_event(tecla,event)
-		for n in str(InputMap.action_get_events(tecla)):
-			if(achou_text==true):
-				var btn_name=get_node(str("Control/BoxContainer/VBoxContainer/Hbox_",tecla,"/btn_",tecla))
-				btn_name.text=n
-				achou_text=false
-			if(n=="("):
-				achou_text=true
-		margin_container.visible=false
+		var redundancia=false
+		for i in inputs:
+			if acha_input(str(event)) == acha_tecla(i):
+				redundancia=true
+		if(redundancia):
+			label_panel.text="esta tecla já esta em uso!"
+		if(!redundancia):
+			label_panel.text="aperte um input valido..."
+			InputMap.action_erase_events(tecla)
+			InputMap.action_add_event(tecla,event)
+			var btn_name=get_node(str("Control/BoxContainer/VBoxContainer/Hbox_",tecla,"/btn_",tecla))
+			btn_name.text=acha_tecla(tecla)
+			margin_container.visible=false
 func createpanel():
 	margin_container.visible=true
 func _cima():
@@ -96,4 +99,24 @@ func _2():
 		
 
 func _on_button_pressed():
+	label_panel.text="aperte um input valido..."
 	margin_container.visible=false
+
+func acha_tecla(elementos:String):
+	var achou:bool=false
+	for i in str(InputMap.action_get_events(elementos)):
+			if(achou):
+				return i
+			if(i=="("):
+				achou=true
+	return "não achou"
+
+func acha_input(input:String):
+	var achou:bool=false
+	for i in input:
+			if(achou):
+				return i
+			if(i=="("):
+				achou=true
+	return "não achou"
+	

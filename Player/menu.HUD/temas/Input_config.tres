@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://brdjnpeks2jbn"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://brdjnpeks2jbn"]
 
 [ext_resource type="FontFile" uid="uid://eabwntnbuc30" path="res://Player/hb.HUD/Gamer.ttf" id="1_5fhb7"]
 
@@ -48,6 +48,8 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7nak"]
+
 [resource]
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 10
@@ -61,3 +63,4 @@ Label/constants/outline_size = 9
 Label/font_sizes/font_size = 49
 Label/fonts/font = ExtResource("1_5fhb7")
 Label/styles/normal = SubResource("StyleBoxFlat_i77o0")
+VSeparator/styles/separator = SubResource("StyleBoxEmpty_c7nak")

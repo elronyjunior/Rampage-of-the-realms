@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj2kgvsbu56r3"]
+
+[ext_resource type="Shader" path="res://shader/radial.gdshader" id="1_w6cuy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5t8la"]
+shader = ExtResource("1_w6cuy")
+shader_parameter/cooldown_progress = null
+shader_parameter/use_transparency = null
+shader_parameter/transparency_alpha = null
+
+[node name="ColorRect" type="ColorRect"]
+material = SubResource("ShaderMaterial_5t8la")
+offset_left = 549.0
+offset_top = 222.0
+offset_right = 589.0
+offset_bottom = 262.0

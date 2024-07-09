@@ -6,6 +6,7 @@ extends Control
 @export_category("fonte habilidades")
 @export var fonte:FontFile=null
 @export var hb_font_color:Color
+var shader_coldown:=preload("res://shader/radial.gdshader")
 @export var hb_font_color_shadow:Color
 @export_category("Material")
 @export var cinza:Shader=null
@@ -26,7 +27,6 @@ func _ready():
 		label["theme_override_colors/font_shadow_color"]=hb_font_color_shadow
 		label.add_theme_color_override("font_color",hb_font_color)
 		label.name=str("label_",elementos)
-		label.text="o"
 		control.add_child(label)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,7 +37,12 @@ func _process(_delta):
 		var label_p = get_node(str("label_",elementos))
 		var img_p = get_node(str("container/VBoxContainer/HBoxContainer/",elementos))
 		if(Global.time_await[elementos]!=0):
-			img_p.material.shader=cinza
+			img_p.material.shader=shader_coldown
+			img_p.material["shader_parameter/transparency_alpha"]=0.100
+			img_p.material["shader_parameter/use_transparency"]=true
+			var cooldown_value = 1.0 - (Global.time_await[elementos] / Global.habilidades[elementos][1])
+			cooldown_value = clamp(cooldown_value, 0.00, 1.00)
+			img_p.material["shader_parameter/cooldown_progress"]=cooldown_value
 			label_p.text=str(Global.time_await[elementos])
 			label_p.global_position.x=img_p.global_position.x+10
 			label_p.global_position.y=img_p.global_position.y+12
