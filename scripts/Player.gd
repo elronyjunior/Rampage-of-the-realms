@@ -1,4 +1,8 @@
 extends CharacterBody2D
+var save_file_path="use"
+var save_file_name="Player_data"
+var playerData=PlayerData.new()
+var load_data=playerData.load_game()
 #pega os playback do animation_tree para depois usar o travel()
 var state_machine
 #estado de ataque do PLayer
@@ -32,7 +36,7 @@ func direcao():
 	"""uma seria de verificações para alterar a posição do marker_2d"""
 	#diagonal superior esquerda
 	if(dir[0]==-1 && dir[1]==-1):
-		marker_2d.position.x=-40
+		marker_2d.position.x=-20
 		marker_2d.position.y=-10
 	#diagonal inferior esquerda
 	elif(dir[0]==-1 && dir[1]==1):
@@ -44,7 +48,7 @@ func direcao():
 		marker_2d.position.y=10
 	#diagonal superior direita
 	elif(dir[0]==1 && dir[1]==-1):
-		marker_2d.position.x=10
+		marker_2d.position.x=20
 		marker_2d.position.y=-10
 	#baixo
 	elif(dir[1]==1):
@@ -67,11 +71,18 @@ func _ready():
 	Hud()
 	Menu()
 	create_timers()
+	player.global_position=load_data.Save_Player_Position
+	print(player.global_position)
 	#pega os playback do animation_tree para depois usar o travel()
 	state_machine= animation_tree["parameters/playback"]
 #essa função é chamada 30 vezes por segundo seguindo o valor de _delta
 func _physics_process(_delta):
 	time_await()
+	if(Input.is_action_just_pressed("save")):
+		print("save")
+		playerData.Update_posision(player.global_position)
+		print(playerData.Save_Player_Position)
+		playerData.save_game()
 	#passa o valor restante do coldown para o time no script global
 	#verifica se apertou o ataque do gelo e se não esta em coldown 
 	if(Input.is_action_just_pressed("0") && !Global.coldown_0 && Global.habilidades[0][0]!="empty"):

@@ -96,6 +96,12 @@ func _1():
 func _2():
 	tecla="2"
 	createpanel()
+func _save():
+	tecla="save"
+	createpanel()
+func _load():
+	tecla="load"
+	createpanel()
 		
 
 func _on_button_pressed():

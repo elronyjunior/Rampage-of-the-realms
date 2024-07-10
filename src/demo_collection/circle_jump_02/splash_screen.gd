@@ -201,11 +201,8 @@ func make_list_custom_anchor(text: String):
 	var output = []
 	var count = text.length()
 	var is_odd = count % 2 == 1
-	@warning_ignore("integer_division")
 	for i in count:
-		@warning_ignore("integer_division")
 		if is_odd:
-			@warning_ignore("integer_division")
 			if i < count / 2:
 				output.append(Vector2(1.0, 1.0))
 			elif i == count / 2:
