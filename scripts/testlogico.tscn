@@ -1,6 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://t26ycn36v4sr"]
+[gd_scene load_steps=6 format=3 uid="uid://t26ycn36v4sr"]
 
 [ext_resource type="Script" path="res://scripts/testlogico.gd" id="1_sgqli"]
+[ext_resource type="Texture2D" uid="uid://c1xxtbaaebquk" path="res://cenas/title screem/logo.png" id="2_iqbeh"]
+
+[sub_resource type="Theme" id="Theme_k0t75"]
+Panel/icons/asdsad = ExtResource("2_iqbeh")
+
+[sub_resource type="Theme" id="Theme_r1y3y"]
+/icons/asdas = ExtResource("2_iqbeh")
+Panel/icons/asdas = ExtResource("2_iqbeh")
+
+[sub_resource type="Theme" id="Theme_a2gmt"]
+/icons/asdasd = ExtResource("2_iqbeh")
+Button/icons/asd = ExtResource("2_iqbeh")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_sgqli")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_k0t75")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_r1y3y")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 43.0
+offset_bottom = 10.0
+theme = SubResource("Theme_a2gmt")

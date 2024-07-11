@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name Config
 @onready var config = $".."
 @export var VboxConatiner:VBoxContainer=null
 @export var HboxContainer:HBoxContainer=null

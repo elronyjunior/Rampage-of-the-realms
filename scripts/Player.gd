@@ -2,6 +2,7 @@ extends CharacterBody2D
 var save_file_path="use"
 var save_file_name="Player_data"
 var playerData=PlayerData.new()
+var config=Config.new()
 var load_data=playerData.load_game()
 #pega os playback do animation_tree para depois usar o travel()
 var state_machine
@@ -68,6 +69,7 @@ func direcao():
 		marker_2d.position.y=0
 #essa função é executada quandoo jogo inicia
 func _ready():
+	config.load_key_binds()
 	Hud()
 	Menu()
 	create_timers()
@@ -82,23 +84,7 @@ func _physics_process(_delta):
 		playerData.Update_posision(player.global_position)
 		print(playerData.Save_Player_Position)
 		playerData.save_game()
-	#passa o valor restante do coldown para o time no script global
-	#verifica se apertou o ataque do gelo e se não esta em coldown 
-	if(Input.is_action_just_pressed("0") && !Global.coldown_0 && Global.habilidades[0][0]!="empty"):
-		projeteis(Global.habilidades[0][0])
-		var name0:Timer=get_node("0")
-		name0.start()
-		Global.coldown_0=true
-	if(Input.is_action_just_pressed("1") && !Global.coldown_1 && Global.habilidades[1][0]!="empty"):
-		projeteis(Global.habilidades[1][0])
-		var name1:Timer=get_node("1")
-		name1.start()
-		Global.coldown_1=true
-	if(Input.is_action_just_pressed("2") && !Global.coldown_2 && Global.habilidades[2][0]!="empty"):
-		projeteis(Global.habilidades[2][0])
-		var name2:Timer=get_node("2")
-		name2.start()
-		Global.coldown_2=true
+	habilidades()
 	direcao()
 	attack()
 	animated()
@@ -215,7 +201,22 @@ func timeout_2():
 func load_save_player():
 	player.global_position=load_data.Save_Player_Position
 	
-
+func habilidades():
+	if(Input.is_action_just_pressed("0") && !Global.coldown_0 && Global.habilidades[0][0]!="empty"):
+		projeteis(Global.habilidades[0][0])
+		var name0:Timer=get_node("0")
+		name0.start()
+		Global.coldown_0=true
+	if(Input.is_action_just_pressed("1") && !Global.coldown_1 && Global.habilidades[1][0]!="empty"):
+		projeteis(Global.habilidades[1][0])
+		var name1:Timer=get_node("1")
+		name1.start()
+		Global.coldown_1=true
+	if(Input.is_action_just_pressed("2") && !Global.coldown_2 && Global.habilidades[2][0]!="empty"):
+		projeteis(Global.habilidades[2][0])
+		var name2:Timer=get_node("2")
+		name2.start()
+		Global.coldown_2=true
 
 
 
