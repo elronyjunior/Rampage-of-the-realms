@@ -71,8 +71,7 @@ func _ready():
 	Hud()
 	Menu()
 	create_timers()
-	player.global_position=load_data.Save_Player_Position
-	print(player.global_position)
+	load_save_player()
 	#pega os playback do animation_tree para depois usar o travel()
 	state_machine= animation_tree["parameters/playback"]
 #essa função é chamada 30 vezes por segundo seguindo o valor de _delta
@@ -213,6 +212,9 @@ func timeout_1():
 func timeout_2():
 	Global.coldown_2=false
 
+func load_save_player():
+	player.global_position=load_data.Save_Player_Position
+	
 
 
 
