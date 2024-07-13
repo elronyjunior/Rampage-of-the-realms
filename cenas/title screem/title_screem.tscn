@@ -133,6 +133,7 @@ theme_override_constants/separation = 0
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("1_fjrxg")
 expand_mode = 2
 

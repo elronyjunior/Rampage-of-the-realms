@@ -187,7 +187,6 @@ func Hud():
 	var hud:=preload("res://Player/hb.HUD/hud.tscn").instantiate()
 	#call_deferrend é uma função que agenda uma ação caso o nó solicitado esteja ocupado
 	get_parent().add_child.call_deferred(hud)
-
 func Menu():
 	var menu:=preload("res://Player/menu.HUD/menu/menu.tscn").instantiate()
 	get_parent().add_child.call_deferred(menu)
