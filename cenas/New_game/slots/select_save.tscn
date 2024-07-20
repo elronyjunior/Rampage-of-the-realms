@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxqlqd2ysqyty"]
+
+[ext_resource type="Script" path="res://cenas/New_game/slots/select_save.gd" id="1_vyoac"]
+
+[node name="select_save" type="Control" node_paths=PackedStringArray("vbox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vyoac")
+vbox = NodePath("VBoxContainer")
+metadata/_edit_vertical_guides_ = [588.0]
+metadata/_edit_horizontal_guides_ = [325.0]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.276
+anchor_right = 0.739
+anchor_bottom = 1.0
+offset_left = 0.0479736
+offset_top = 6.0
+offset_right = -0.328003
+offset_bottom = 3.0
+alignment = 1

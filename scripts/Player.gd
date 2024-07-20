@@ -199,7 +199,6 @@ func timeout_2():
 
 func load_save_player():
 	player.global_position=load_data.Save_Player_Position
-	
 func habilidades():
 	if(Input.is_action_just_pressed("0") && !Global.coldown_0 && Global.habilidades[0][0]!="empty"):
 		projeteis(Global.habilidades[0][0])

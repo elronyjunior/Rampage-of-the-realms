@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Player/player_data.gd" id="1_wub1f"]
+
+[resource]
+script = ExtResource("1_wub1f")
+Save_Player_Position = Vector2(0, 0)
+screenshot_load = 0
+key_binds = {
+"0": "Q",
+"1": "E",
+"2": "R",
+"attack": "J",
+"baixo": "S",
+"cima": "H",
+"direita": "D",
+"esquerda": "A",
+"save": "N"
+}

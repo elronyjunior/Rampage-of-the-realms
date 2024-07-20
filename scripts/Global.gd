@@ -7,6 +7,7 @@ var coldown_1:bool=false
 var coldown_2:bool=false
 var navigation:bool=false
 var time_await={0:0,1:0,2:0}
+var slot:int
 
 var bullet_possition:Vector2
 func _ready():

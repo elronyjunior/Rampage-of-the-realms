@@ -13,8 +13,8 @@ var dicionario={}
 var tecla=" "
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_key_binds()
 	create_inputs()
+	load_key_binds()
 	create_list()
 
 
@@ -38,6 +38,7 @@ func create_inputs():
 		x+=1
 		if(x>76):
 			inputs.append(i)
+	print(inputs)
 
 func create_list():
 	for elementos in inputs:

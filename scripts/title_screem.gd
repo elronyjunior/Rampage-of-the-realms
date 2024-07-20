@@ -9,11 +9,11 @@ func _on_btn_quit_pressed():
 
 
 func _on_btn_continue_pressed():
-	get_tree().change_scene_to_file("res://cenas/test.tscn")
+	get_tree().change_scene_to_file("res://cenas/load game/select_load.tscn")
 
 
 func _on_btn_new_game_pressed():
-	get_tree().change_scene_to_file("res://cenas/test.tscn")
+	get_tree().change_scene_to_file("res://cenas/New_game/slots/select_save.tscn")
 
 
 func _on_config_pressed():

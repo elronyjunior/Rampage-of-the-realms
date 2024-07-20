@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ddmfm33jtjykg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw2ep"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjdvh"]
+bg_color = Color(0.346638, 0.511195, 0.903535, 0.596078)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+HSeparator/styles/separator = SubResource("StyleBoxEmpty_vw2ep")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_tjdvh")

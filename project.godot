@@ -25,7 +25,8 @@ gd="*res://addons/godot-action/utils_gd_action.tscn"
 [dialogic]
 
 directories/dch_directory={
-"character": "res://dialogos/character.dch"
+"character": "res://dialogos/character.dch",
+"unit_test_character": "res://addons/dialogic-main/Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
 "inicio": "res://dialogos/inicio.dtl"
@@ -59,7 +60,16 @@ glossary/glossary_files=["res://dialogos/New_File.tres"]
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
+enabled=PackedStringArray("res://addons/BurstParticles2D/plugin.cfg", "res://addons/awesome_splash/plugin.cfg", "res://addons/godot-action/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Player/": "red",
+"res://cenas/": "pink",
+"res://projeteis/": "yellow",
+"res://scripts/": "green"
+}
 
 [importer_defaults]
 
