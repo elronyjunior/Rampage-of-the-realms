@@ -1,12 +1,15 @@
-extends Node2D
-var objdata=PlayerData.new()
-var dictionary={0:{"batata":10}}
+extends Window
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var objConfigData=ConfigData.new()
-	objConfigData.save_game()
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_size_changed():
+	pass # Replace with function body.

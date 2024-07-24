@@ -1,8 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://cn7kypjs1yt8q"]
+[gd_scene load_steps=44 format=3 uid="uid://cn7kypjs1yt8q"]
 
 [ext_resource type="Script" path="res://cenas/New_game/new_save/New_save.gd" id="1_17lxv"]
 [ext_resource type="Texture2D" uid="uid://bk127b1h5p0ai" path="res://cenas/New_game/new_save/bg.png" id="2_ivj2q"]
-[ext_resource type="Texture2D" uid="uid://fq01ygdyou0c" path="res://cenas/New_game/new_save/5.png" id="3_r1hmo"]
 [ext_resource type="Texture2D" uid="uid://ba6lamnxhti3e" path="res://Player/sprite/player.png" id="4_86qbb"]
 [ext_resource type="Texture2D" uid="uid://cg05drb56virj" path="res://cenas/New_game/classes/Orc.png" id="5_qd147"]
 [ext_resource type="Texture2D" uid="uid://dqp60u2klim33" path="res://cenas/New_game/classes/Soldier.png" id="6_itkqh"]
@@ -12,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cgfinin5oucol" path="res://cenas/New_game/status icon/inteligence.png" id="10_u30j7"]
 [ext_resource type="Texture2D" uid="uid://nw42r7el3rgk" path="res://cenas/New_game/status icon/sorte.png" id="11_3xebu"]
 [ext_resource type="Texture2D" uid="uid://d4iwrjkdp32m6" path="res://cenas/New_game/status icon/defesa.png" id="12_g8w00"]
+[ext_resource type="Theme" uid="uid://cto6y30lw8att" path="res://cenas/New_game/new_save/new_player.tres" id="12_novo3"]
+[ext_resource type="ButtonGroup" uid="uid://bdrq2ear0o7l8" path="res://cenas/New_game/new_save/class_button_group.tres" id="13_njsla"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_twqc3"]
 atlas = ExtResource("4_86qbb")
@@ -204,7 +205,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="New_Save" type="Control" node_paths=PackedStringArray("name_input", "animation")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wh57q"]
+bg_color = Color(0, 0, 0, 0.160784)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5b83"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsybd"]
+bg_color = Color(0, 0, 0, 0.282353)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qlr00"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtmwy"]
+
+[node name="New_Save" type="Control" node_paths=PackedStringArray("name_input", "animation", "label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,6 +235,7 @@ grow_vertical = 2
 script = ExtResource("1_17lxv")
 name_input = NodePath("VBoxContainer/name")
 animation = NodePath("MarginContainer/CenterContainer/AnimatedSprite2D")
+label = NodePath("Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -225,48 +247,23 @@ grow_vertical = 2
 texture = ExtResource("2_ivj2q")
 expand_mode = 5
 
-[node name="change_class_btn" type="CanvasLayer" parent="."]
-
-[node name="TextureButton" type="TextureButton" parent="change_class_btn"]
-anchors_preset = -1
-anchor_right = 0.035
-anchor_bottom = 0.062
-offset_left = 53.0
-offset_top = 321.0
-offset_right = 107.68
-offset_bottom = 375.824
-texture_normal = ExtResource("3_r1hmo")
-stretch_mode = 0
-
-[node name="TextureButton2" type="TextureButton" parent="change_class_btn"]
-anchors_preset = -1
-anchor_right = 0.035
-anchor_bottom = 0.062
-offset_left = 347.0
-offset_top = 317.0
-offset_right = 401.68
-offset_bottom = 371.824
-texture_normal = ExtResource("3_r1hmo")
-stretch_mode = 0
-flip_h = true
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.11
+anchor_left = 0.397
 anchor_top = 0.36
-anchor_right = 0.312
-anchor_bottom = 0.731
-offset_left = 0.279991
+anchor_right = 0.589
+anchor_bottom = 0.724
+offset_left = -0.344025
 offset_top = -0.280014
-offset_right = -0.424011
-offset_bottom = 0.311981
+offset_right = -0.528076
+offset_bottom = -0.152039
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/CenterContainer"]
-position = Vector2(97, 92)
+position = Vector2(74, 66)
 scale = Vector2(8.44963, 8.30964)
 sprite_frames = SubResource("SpriteFrames_o7gtw")
 animation = &"goblin"
@@ -275,11 +272,14 @@ frame_progress = 0.0312997
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.036
-offset_left = 746.0
-offset_top = 49.0
-offset_right = 1036.53
-offset_bottom = 101.0
+anchor_left = 0.648
+anchor_top = 0.076
+anchor_right = 0.936
+anchor_bottom = 0.478
+offset_left = -0.495972
+offset_top = -0.248005
+offset_right = -0.27002
+offset_bottom = -208.744
 
 [node name="name" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
@@ -335,15 +335,15 @@ item_1/selectable = false
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.143
+anchor_left = 0.401
 anchor_top = 0.233
-anchor_right = 0.267
-anchor_bottom = 0.33
-offset_left = 0.263992
-offset_top = 0.0159912
-offset_right = 0.415985
-offset_bottom = 0.159988
-theme_override_font_sizes/font_size = 45
+anchor_right = 0.444
+anchor_bottom = 0.27
+offset_left = 0.0480042
+offset_top = 0.0160065
+offset_right = 0.511963
+offset_bottom = 0.0399933
+theme_override_font_sizes/font_size = 14
 text = "Goblin"
 
 [node name="Button" type="Button" parent="."]
@@ -354,11 +354,121 @@ anchor_top = 0.762
 anchor_right = 0.799
 anchor_bottom = 0.872
 offset_left = 0.42395
-offset_top = 0.223999
-offset_right = -0.447998
-offset_bottom = -0.0560303
+offset_top = -4.776
+offset_right = 4.552
+offset_bottom = -0.0559692
 text = "Create"
 
-[connection signal="pressed" from="change_class_btn/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="change_class_btn/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.318
+anchor_right = 0.311
+anchor_bottom = 0.806
+offset_left = -0.408001
+offset_top = -0.0640106
+offset_right = -0.272034
+offset_bottom = -0.288025
+theme_override_styles/panel = SubResource("StyleBoxFlat_wh57q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u5b83")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_tsybd")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qlr00")
+text = "      Escolha sua classe      "
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dtmwy")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_right = 22
+
+[node name="VboxClass" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+toggle_mode = true
+keep_pressed_outside = true
+button_group = ExtResource("13_njsla")
+text = "Human"
+alignment = 0
+
+[node name="HSeparator5" type="HSeparator" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+toggle_mode = true
+button_group = ExtResource("13_njsla")
+text = "Globin"
+alignment = 0
+
+[node name="HSeparator4" type="HSeparator" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+toggle_mode = true
+button_group = ExtResource("13_njsla")
+text = "Mage"
+alignment = 0
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+toggle_mode = true
+button_group = ExtResource("13_njsla")
+text = "Guerreiro"
+alignment = 0
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+
+[node name="Button5" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+toggle_mode = true
+button_group = ExtResource("13_njsla")
+text = "Guerreiro"
+alignment = 0
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+layout_mode = 2
+theme = ExtResource("12_novo3")
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button" to="." method="btn_class_1"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button2" to="." method="btn_class_2"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button3" to="." method="btn_class_3"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button4" to="." method="btn_class_4"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button5" to="." method="btn_class_5"]

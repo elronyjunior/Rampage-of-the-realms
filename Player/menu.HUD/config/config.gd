@@ -5,8 +5,8 @@ class_name Config
 @export var HboxContainer:HBoxContainer=null
 @export var margin_container:MarginContainer=null
 @export var label_panel:Label=null
-var playerData=PlayerData.new()
-var load_inputs=playerData.load_game()
+var configData=ConfigData.new()
+var load_inputs=configData.load_game()
 var tema_input:=preload("res://Player/menu.HUD/temas/Input_config.tres")
 var inputs=[]
 var dicionario={}
@@ -24,7 +24,7 @@ func _process(_delta):
 
 func _on_btn_quit_pressed():
 	save_key_binds()
-	playerData.save_game()
+	configData.save_game()
 	get_parent().visible=true
 	Global.navigation=false
 	queue_free()
@@ -132,9 +132,10 @@ func acha_input(input:String):
 	
 func save_key_binds():
 	for input in inputs:
-		playerData.key_binds[input]=acha_tecla(input)
+		configData.key_binds[input]=acha_tecla(input)
 
 func load_key_binds():
+	print(load_inputs)
 	for i in load_inputs.key_binds:  # Supondo que `inputs` seja uma lista de ações
 		var key_string = load_inputs.key_binds[i]  # Supondo que acha_tecla retorna a string da tecla desejada
 		var code = OS.find_keycode_from_string(key_string)

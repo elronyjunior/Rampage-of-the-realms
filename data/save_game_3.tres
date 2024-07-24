@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_4gehq")
 player_name = "ronaldo"
-player_class = "goblin"
+player_class = "mage"
 player_nivel = 0
 player_texture = "res://Player/icon_skills/empty.png"
 save_slot = 3
