@@ -14,7 +14,7 @@ func _ready():
 	DisplayServer.window_set_min_size(Vector2(800, 600))
 func _physics_process(delta):
 	pass
-func text_proporcional(tamanho_text:int,max:int):
+func proporcional(tamanho_text:int,max:int):
 	var tam_abertura = Vector2(1152, 648)
 	var resolucao = get_viewport().size
 	var text_size = tamanho_text

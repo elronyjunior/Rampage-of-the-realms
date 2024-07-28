@@ -37,6 +37,6 @@ func tirarPrint():
 	await RenderingServer.frame_post_draw
 	var viewport = get_viewport()
 	var img = viewport.get_texture().get_image()
-	img.save_png(str("res://prints/",load_data.screenshot_load + 1,".png"))
+	img.save_png(str("user://",load_data.screenshot_load + 1,".png"))
 	printData.save_print(load_data.screenshot_load + 1)
 

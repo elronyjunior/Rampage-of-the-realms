@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://cenas/hud_manager.gd" id="1_berlb"]
 [ext_resource type="FontFile" uid="uid://eabwntnbuc30" path="res://Player/hb.HUD/Gamer.ttf" id="2_c8o0q"]
-[ext_resource type="Shader" path="res://cenas/cinza.gdshader" id="3_x2mte"]
+[ext_resource type="Shader" path="res://Player/cinza.gdshader" id="3_22amr"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -24,7 +24,7 @@ h_box_container = NodePath("container/VBoxContainer/HBoxContainer")
 fonte = ExtResource("2_c8o0q")
 hb_font_color = Color(1, 1, 0, 1)
 hb_font_color_shadow = Color(1, 0.521569, 0, 1)
-cinza = ExtResource("3_x2mte")
+cinza = ExtResource("3_22amr")
 
 [node name="container" type="MarginContainer" parent="Control"]
 layout_mode = 1

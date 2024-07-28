@@ -1,16 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://cn7kypjs1yt8q"]
+[gd_scene load_steps=38 format=3 uid="uid://cn7kypjs1yt8q"]
 
 [ext_resource type="Script" path="res://cenas/New_game/new_save/New_save.gd" id="1_17lxv"]
 [ext_resource type="Texture2D" uid="uid://bk127b1h5p0ai" path="res://cenas/New_game/new_save/bg.png" id="2_ivj2q"]
 [ext_resource type="Texture2D" uid="uid://ba6lamnxhti3e" path="res://Player/sprite/player.png" id="4_86qbb"]
 [ext_resource type="Texture2D" uid="uid://cg05drb56virj" path="res://cenas/New_game/classes/Orc.png" id="5_qd147"]
 [ext_resource type="Texture2D" uid="uid://dqp60u2klim33" path="res://cenas/New_game/classes/Soldier.png" id="6_itkqh"]
-[ext_resource type="Theme" uid="uid://cxbgiajvlfuni" path="res://cenas/New_game/new_game.tres" id="7_r28wa"]
-[ext_resource type="Texture2D" uid="uid://lnr3awi2ml6q" path="res://cenas/New_game/status icon/vida.png" id="8_hokch"]
-[ext_resource type="Texture2D" uid="uid://dpxtwtwkyjfxy" path="res://cenas/New_game/status icon/força.png" id="9_3ytrq"]
-[ext_resource type="Texture2D" uid="uid://cgfinin5oucol" path="res://cenas/New_game/status icon/inteligence.png" id="10_u30j7"]
-[ext_resource type="Texture2D" uid="uid://nw42r7el3rgk" path="res://cenas/New_game/status icon/sorte.png" id="11_3xebu"]
-[ext_resource type="Texture2D" uid="uid://d4iwrjkdp32m6" path="res://cenas/New_game/status icon/defesa.png" id="12_g8w00"]
 [ext_resource type="Theme" uid="uid://cto6y30lw8att" path="res://cenas/New_game/new_save/new_player.tres" id="12_novo3"]
 [ext_resource type="ButtonGroup" uid="uid://bdrq2ear0o7l8" path="res://cenas/New_game/new_save/class_button_group.tres" id="13_njsla"]
 
@@ -225,7 +219,7 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtmwy"]
 
-[node name="New_Save" type="Control" node_paths=PackedStringArray("name_input", "animation", "label")]
+[node name="New_Save" type="Control" node_paths=PackedStringArray("name_input", "animation", "label_class")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,7 +229,8 @@ grow_vertical = 2
 script = ExtResource("1_17lxv")
 name_input = NodePath("VBoxContainer/name")
 animation = NodePath("MarginContainer/CenterContainer/AnimatedSprite2D")
-label = NodePath("Label")
+label_class = NodePath("class")
+metadata/_edit_horizontal_guides_ = [181.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -263,7 +258,7 @@ offset_bottom = -0.152039
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/CenterContainer"]
-position = Vector2(74, 66)
+position = Vector2(78, 48)
 scale = Vector2(8.44963, 8.30964)
 sprite_frames = SubResource("SpriteFrames_o7gtw")
 animation = &"goblin"
@@ -273,13 +268,13 @@ frame_progress = 0.0312997
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.648
-anchor_top = 0.076
+anchor_top = 0.279
 anchor_right = 0.936
-anchor_bottom = 0.478
+anchor_bottom = 0.787
 offset_left = -0.495972
-offset_top = -0.248005
-offset_right = -0.27002
-offset_bottom = -208.744
+offset_top = 0.207993
+offset_right = -0.271973
+offset_bottom = 0.0239563
 
 [node name="name" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
@@ -294,69 +289,33 @@ theme_override_font_sizes/font_size = 28
 text = "Status"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="ItemList2" type="ItemList" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.56
-theme = ExtResource("7_r28wa")
-allow_search = false
-auto_height = true
-item_count = 5
-item_0/text = "vida"
-item_0/icon = ExtResource("8_hokch")
-item_0/selectable = false
-item_1/text = "força"
-item_1/icon = ExtResource("9_3ytrq")
-item_1/selectable = false
-item_2/text = "inteligencia"
-item_2/icon = ExtResource("10_u30j7")
-item_2/selectable = false
-item_3/text = "Sorte"
-item_3/icon = ExtResource("11_3xebu")
-item_3/selectable = false
-item_4/text = "Defesa"
-item_4/icon = ExtResource("12_g8w00")
-item_4/selectable = false
-
-[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_r28wa")
-auto_height = true
-item_count = 2
-item_0/text = "10"
-item_0/selectable = false
-item_1/text = "20"
-item_1/selectable = false
-
-[node name="Label" type="Label" parent="."]
+[node name="class" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.401
-anchor_top = 0.233
-anchor_right = 0.444
-anchor_bottom = 0.27
-offset_left = 0.0480042
-offset_top = 0.0160065
-offset_right = 0.511963
-offset_bottom = 0.0399933
-theme_override_font_sizes/font_size = 14
+anchor_left = 0.422
+anchor_top = 0.31
+anchor_right = 0.52
+anchor_bottom = 0.387
+offset_left = -0.144012
+offset_top = 0.119995
+offset_right = -0.0400391
+offset_bottom = 0.223984
+theme_override_font_sizes/font_size = 36
 text = "Goblin"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.688
-anchor_top = 0.762
-anchor_right = 0.799
-anchor_bottom = 0.872
-offset_left = 0.42395
-offset_top = -4.776
-offset_right = 4.552
-offset_bottom = -0.0559692
+anchor_left = 0.415
+anchor_top = 0.873
+anchor_right = 0.53
+anchor_bottom = 0.991
+offset_left = -0.0800171
+offset_top = 0.295959
+offset_right = -0.560059
+offset_bottom = -0.16803
 text = "Create"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -365,11 +324,11 @@ anchors_preset = -1
 anchor_left = 0.029
 anchor_top = 0.318
 anchor_right = 0.311
-anchor_bottom = 0.806
-offset_left = -0.408001
-offset_top = -0.0640106
+anchor_bottom = 0.742
+offset_left = -0.407997
+offset_top = -0.0639954
 offset_right = -0.272034
-offset_bottom = -0.288025
+offset_bottom = 0.18396
 theme_override_styles/panel = SubResource("StyleBoxFlat_wh57q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
@@ -386,7 +345,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_tsybd")
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer"]
+[node name="text_class" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qlr00")
 text = "      Escolha sua classe      "
@@ -405,7 +364,7 @@ theme_override_constants/margin_right = 22
 [node name="VboxClass" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
+[node name="Button1" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
 layout_mode = 2
 theme = ExtResource("12_novo3")
 toggle_mode = true
@@ -464,10 +423,12 @@ alignment = 0
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/MarginContainer/VboxClass"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.02
 theme = ExtResource("12_novo3")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button" to="." method="btn_class_1"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button1" to="." method="btn_class_1"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button2" to="." method="btn_class_2"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button3" to="." method="btn_class_3"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button4" to="." method="btn_class_4"]
