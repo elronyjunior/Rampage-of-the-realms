@@ -104,9 +104,6 @@ func _1():
 func _2():
 	tecla="2"
 	createpanel()
-func _save():
-	tecla="save"
-	createpanel()
 
 func _on_button_pressed():
 	label_panel.text="aperte um input valido..."

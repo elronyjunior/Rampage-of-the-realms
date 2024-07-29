@@ -9,6 +9,7 @@ var btn_selectd=0
 var classes={0:["Human",[10,4,2,10],["habilidades array"]],1:["Goblin",[10,40,2,10],["habilidades array"]],2:["Mage",[10,2,2,110],["habilidades array"]],3:["Knight",[10,2,2,110],["habilidades array"]],4:["Evil",[10,2,2,110],["habilidades array"]]}
 var total_classes=classes.size()
 # Called when the node enters the scene tree for the first time.
+var obj_playerdata=PlayerData.new()
 func _ready():
 	get_node("PanelContainer/VBoxContainer/MarginContainer/VboxClass/Button1")["button_pressed"]=true
 	animation.play("default")
@@ -31,7 +32,6 @@ func _on_button_pressed():
 	get_tree().change_scene_to_file("res://cenas/Tutorial/Tutorial.tscn")
 	
 func creat_save():
-	var obj_playerdata=PlayerData.new()
 	obj_playerdata.save_path=str("res://data/save_game_",Global.slot,".tres")
 	obj_playerdata.create_basic_save(name_input.text,classes[btn_selectd][0],classes[btn_selectd][1],Global.slot)
 

@@ -39,6 +39,7 @@ func creat_saves(exist:bool,name_save:String):
 		load_slot.get_node("MarginContainer/save/HBoxContainer/nivel").text=str(load_obj.player_nivel)
 		load_slot.get_node("MarginContainer/save/VBoxContainer/Name").text=load_obj.player_name
 		load_slot.get_node("MarginContainer/save/VBoxContainer/class").text=load_obj.player_class
+		load_slot.get_node("MarginContainer/save/mini_picture").texture=load(str("res://data/img_save/",name_save,".png"))
 		var func_ref = get(str("btn_save_",name_save))
 		load_slot.get_node("Button").pressed.connect(func_ref)
 		vbox.add_child(load_slot)

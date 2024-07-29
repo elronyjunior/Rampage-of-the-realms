@@ -1,6 +1,5 @@
 extends Control
 @export var vbox:VBoxContainer=null
-var erro=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(3):
@@ -11,6 +10,7 @@ func _ready():
 			load_slot.get_node("MarginContainer/save/HBoxContainer/nivel").text=str(load_obj.player_nivel)
 			load_slot.get_node("MarginContainer/save/VBoxContainer/Name").text=load_obj.player_name
 			load_slot.get_node("MarginContainer/save/VBoxContainer/class").text=load_obj.player_class
+			load_slot.get_node("MarginContainer/save/mini_picture").texture=load(str("res://data/img_save/",i+1,".png"))
 			var func_ref = get(str("btn_load_",i+1))
 			load_slot.get_node("Button").pressed.connect(func_ref)
 			vbox.add_child(load_slot)
@@ -21,14 +21,17 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func btn_load_1():
+	Global.slot=1
 	inicia_jogo(1)
 func btn_load_2():
+	Global.slot=2
 	inicia_jogo(2)
 func btn_load_3():
+	Global.slot=3
 	inicia_jogo(3)
 func load_game(save_path:String):
 	var saved_data = ResourceLoader.load(save_path)

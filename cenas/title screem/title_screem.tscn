@@ -135,12 +135,13 @@ custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_fjrxg")
-expand_mode = 2
+expand_mode = 3
+stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 size_flags_vertical = 4
 
 [node name="btn_new_game" type="Button" parent="HBoxContainer/VBoxContainer"]
@@ -149,11 +150,13 @@ theme = ExtResource("2_8cjwo")
 text = "New Game"
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(50, 10)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_648lr")
 
 [node name="btn_continue" type="Button" parent="HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_8cjwo")
 text = "Continue"

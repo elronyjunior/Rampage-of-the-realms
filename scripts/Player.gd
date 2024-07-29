@@ -3,7 +3,7 @@ var save_file_path="use"
 var save_file_name="Player_data"
 var playerData=PlayerData.new()
 var config=Config.new()
-var load_data=playerData.load_game()
+var load_data=playerData.load_game(str("res://data/save_game_",Global.slot,".tres"))
 #pega os playback do animation_tree para depois usar o travel()
 var state_machine
 #estado de ataque do PLayer
@@ -79,11 +79,6 @@ func _ready():
 #essa função é chamada 30 vezes por segundo seguindo o valor de _delta
 func _physics_process(_delta):
 	time_await()
-	if(Input.is_action_just_pressed("save")):
-		print("save")
-		playerData.Update_posision(player.global_position)
-		print(playerData.Save_Player_Position)
-		playerData.save_game()
 	habilidades()
 	direcao()
 	attack()

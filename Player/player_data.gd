@@ -31,8 +31,8 @@ func save_print(N:int):
 func save_game():
 	ResourceSaver.save(self,save_path)
 	
-func load_game():
-	var saved_data = ResourceLoader.load(save_path)
+func load_game(load_path:String):
+	var saved_data = ResourceLoader.load(load_path)
 	var loaded_data = saved_data as PlayerData
 	return loaded_data
 
