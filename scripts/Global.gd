@@ -41,5 +41,18 @@ func proporcional(tamanho_text:int,maximus:int):
 		return maximus
 	return resultado
 
+func acha_filhos(node_pai:Node,tipe:String,excecoes:Array=[],array_filhos:Array=[]):
+	var banido:bool=false
+	for filho in node_pai.get_children():
+		if(filho.get_child_count()>0):
+			acha_filhos(filho,tipe,excecoes,array_filhos)
+		if excecoes != []:
+			for excecao in excecoes:
+				if filho.name==str(excecao):
+					banido=true
+		if filho.is_class(tipe) && !banido:
+			array_filhos.append(filho)
+		banido=false
+	return array_filhos
 #slot/tiro/tempo/dano
 var habilidades={0:["ice",3,10],1:["fire",2,5],2:["ice",2,5]}
