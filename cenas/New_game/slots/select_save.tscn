@@ -25,3 +25,15 @@ offset_top = 6.0
 offset_right = -0.328003
 offset_bottom = 3.0
 alignment = 1
+
+[node name="BtnVoltar" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.047
+anchor_bottom = 0.048
+offset_right = -46.144
+offset_bottom = -23.104
+text = "voltar
+"
+
+[connection signal="pressed" from="BtnVoltar" to="." method="_on_btn_voltar_pressed"]

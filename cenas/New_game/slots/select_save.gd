@@ -34,7 +34,7 @@ func creat_saves(exist:bool,name_save:String):
 		vbox.add_child(separa)
 	if(exist):
 		var load_obj=load_game(str("res://data/save_game_",name_save,".tres"))
-		var load_slot=preload("res://cenas/load game/panel_container.tscn").instantiate()
+		var load_slot=preload("res://cenas/load game/Panel_select_load.tscn").instantiate()
 		load_slot.name=str("slot_",name_save)
 		load_slot.get_node("MarginContainer/save/HBoxContainer/nivel").text=str(load_obj.player_nivel)
 		load_slot.get_node("MarginContainer/save/VBoxContainer/Name").text=load_obj.player_name
@@ -68,3 +68,7 @@ func btn_save_2():
 func btn_save_3():
 	print("new save 3")
 	new_save_title(3)
+
+
+func _on_btn_voltar_pressed() -> void:
+	get_tree().change_scene_to_file("res://cenas/title screem/title_screem.tscn")

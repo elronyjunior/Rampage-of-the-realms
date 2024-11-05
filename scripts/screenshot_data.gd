@@ -11,4 +11,3 @@ func load_print():
 	var saved_print = ResourceLoader.load(save_path)
 	var loaded_print_data = saved_print as Screenshot
 	return loaded_print_data
-

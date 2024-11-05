@@ -155,7 +155,7 @@ func projeteis(tipo:String):
 		#do Player
 		instancia.global_position=marker_2d.global_position
 		instancia.set_direction(dir)
-		get_parent().add_sibling(instancia)
+		get_parent().add_child.call_deferred(instancia)
 	
 #um couldown para o attack
 func _on_attack_timer_timeout():
@@ -210,8 +210,3 @@ func habilidades():
 		var name2:Timer=get_node("2")
 		name2.start()
 		Global.coldown_2=true
-
-
-
-
-

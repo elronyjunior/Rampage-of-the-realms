@@ -12,7 +12,6 @@ var label=Label.new()
 var bullet_possition:Vector2
 func _ready():
 	DisplayServer.window_set_min_size(Vector2(800, 600))
-
 func _notification(what):
 		if(what==1006):
 			await printscreen()
@@ -41,11 +40,11 @@ func proporcional(tamanho_text:int,maximus:int):
 		return maximus
 	return resultado
 
-func acha_filhos(node_pai:Node,tipe:String,excecoes:Array=[],array_filhos:Array=[]):
+func acha_filhos(tipe:String,excecoes:Array=[],node_pai:Node=get_node("/root").get_child(3),array_filhos:Array=[]):
 	var banido:bool=false
 	for filho in node_pai.get_children():
 		if(filho.get_child_count()>0):
-			acha_filhos(filho,tipe,excecoes,array_filhos)
+			acha_filhos(tipe,excecoes,filho,array_filhos)
 		if excecoes != []:
 			for excecao in excecoes:
 				if filho.name==str(excecao):

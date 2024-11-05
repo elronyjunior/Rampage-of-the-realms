@@ -1,11 +1,23 @@
 extends Control
 @export var vbox:VBoxContainer=null
+@export var animation:AnimationPlayer=null
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animation.play("intro_load")
+	create_panel_load()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+
+
+func create_panel_load():
 	for i in range(3):
 		if(save_exists(str("res://data/save_game_",i+1,".tres"))):
 			var load_obj=load_game(str("res://data/save_game_",i+1,".tres"))
-			var load_slot=preload("res://cenas/load game/panel_container.tscn").instantiate()
+			var load_slot=preload("res://cenas/load game/Panel_select_load.tscn").instantiate()
 			load_slot.name=str("slot_",i+1)
 			load_slot.get_node("MarginContainer/save/HBoxContainer/nivel").text=str(load_obj.player_nivel)
 			load_slot.get_node("MarginContainer/save/VBoxContainer/Name").text=load_obj.player_name
@@ -18,12 +30,6 @@ func _ready():
 			separa.custom_minimum_size=Vector2(271,30)
 			separa.theme=preload("res://cenas/load game/load_tema.tres")
 			vbox.add_child(separa)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func btn_load_1():
 	Global.slot=1
 	inicia_jogo(1)
@@ -39,10 +45,12 @@ func load_game(save_path:String):
 	return loaded_data
 func save_exists(path: String) -> bool:
 	return FileAccess.file_exists(path)
-
 func inicia_jogo(save:int):
 	var path=str("res://data/save_game_",save,".tres")
 	var load_obj=load_game(path)
 	if(save_exists(path)):
 		get_tree().change_scene_to_file(load_obj.curent_scene)
 
+
+func _on_btn_voltar_pressed() -> void:
+	get_tree().change_scene_to_file("res://cenas/title screem/title_screem.tscn")
